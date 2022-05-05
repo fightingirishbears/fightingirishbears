@@ -1,0 +1,106 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- REACT LIBRARY -->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!-- REACT DOM LIBRARY -->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!-- BABEL LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Boiler Plate Code</title>
+</head>
+<body>
+
+    <div id="app">React has not rendered yet</div>
+
+    <script type="text/babel">
+
+        //  https://swapi.dev/api/people/?page=2
+
+        // want to keep track of state, so use class
+        class App extends React.Component {
+        constructor(props) {
+        super(props);
+        this.state = {
+        items: []   //  setting state to empty array for api will interact with
+        };
+        }
+
+        // componentDidMount
+        // most common use case:  starting AJAX calls to load data for your component
+        // can call setState
+        componentDidMount() {
+        fetch('https://swapi.dev/api/people/')
+        //.then(function(response) {
+        //    return response.json()
+        //})
+        // promise is full filled, use .then
+        .then(response => response.json())
+        .then(responseData => {
+        this.setState({
+        items: responseData.results
+        });
+        })
+        //  if some error do this
+        .catch(error => {
+        console.log('fetching and parsing data error', error);
+        });
+        }
+
+
+        render() {
+        let items= this.state.items;
+        console.log(items);
+
+        const words = [{word: "tractor"}, {word: "egg"}, {word: "flax"}]
+
+        var SWStyle = {
+        display: 'inline-block',
+        textAlign: "center",
+        margin: 20,
+        height: 200,
+        width: 200,
+        padding: 0,
+        backgroundColor: "#FFF",
+        WebkitFilter: "drop-shadow(0px 0px 5px #555)",
+        filter: "drop-shadow(0px 0px 5px #555)"
+        };
+
+
+        return(
+        <div>
+
+            <div>
+                {items.map(function(item) {
+                return (
+                <div style={SWStyle}>
+                    <h4 key={item.name}>{item.name}</h4>
+                    <h4>Eye color of: {item.eye_color}</h4>
+                    <h4>Height of: {item.height}</h4>
+                </div>
+                )
+
+                })}
+            </div>
+        </div>
+        );
+        }
+        }
+
+        ReactDOM.render(
+
+        <App />
+        ,
+        document.getElementById("app")  //WHERE
+        );
+
+    </script>
+</body>
+</html>

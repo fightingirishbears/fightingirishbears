@@ -1,0 +1,94 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 100s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.board {
+    justify-content: center;
+    align-content: center;
+    flex-grow: 1;
+}
+
+
+.guessgrid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    flex-grow: 1;
+    grid-template-columns: repeat(4, 4em);
+    grid-template-rows: repeat(5, 4em);
+    gap: .25em;
+    margin-bottom: 1em;
+    //grid-template: repeat(var(--grid-size), 1fr) / repeat(var(--grid-size), 1fr);
+}
+
+.tile {
+    background-color: red;
+    font-size: 2em;
+    color: white;
+    border: .05em solid hsl(240, 2%, 23%);
+    text-transform: uppercase;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.tile[data-state="active"] {
+    border-color: hsl(200, 1%, 34%)
+ }
+
+.tile[data-state="wrong"] {
+    border: none;
+    border-color: hsl(240, 2%, 23%)
+}
+
+
+.tile[data-state="wrong-location"] {
+    border: none;
+    border-color: hsl(49, 51%, 47%)
+}
+
+.tile[data-state="correct"] {
+    border: none;
+    border-color: hsl(115, 29%, 43%)
+}
+
+
+
