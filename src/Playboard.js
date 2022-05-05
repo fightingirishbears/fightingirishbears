@@ -337,37 +337,20 @@ useEffect(() => {
 
 
 
+const validateWord = (word) => {
+    console.log("Try validate the word now: ", word)
+    let url = 'https://api.dictionaryapi.dev/api/v2/entries/en/' + word
+    return fetch(url, {
+        method: "GET",
+    })
+        // promise is full filled, use .then
 
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch((error) => console.log("fetching and parsing data error:  ", error));
+        
 
-
-
-
-    const wordCheck = () => {
-
-            fetch('https://swapi.dev/api/people/')
-                //.then(function(response) {
-                //    return response.json()
-                //})
-                // promise is full filled, use .then
-                .then(response => response.json())
-                .then(responseData => {
-                    this.setState({
-                        items: responseData.results
-                    });
-                })
-                //  if some error do this
-                .catch(error => {
-                    console.log('fetching and parsing data error', error);
-                });
-        }
-
-
-    }
-
-
-
-
-
+}
 
 
 const handleClick = (key, e) => {
@@ -383,6 +366,10 @@ const handleClick = (key, e) => {
 const enterGuess = (key, e) => {
 
     e.preventDefault()       // trying to stop screen refresh?
+
+    if (key === "enter") {
+        validateWord('eggs')
+    }
 
     //TO DO////////////////////////////////////////////////////////
     // need to check if valid word
