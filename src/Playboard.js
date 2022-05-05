@@ -368,7 +368,8 @@ const enterGuess = (key, e) => {
     e.preventDefault()       // trying to stop screen refresh?
 
     if (key === "enter") {
-        validateWord('eggs')
+        let letters = matrix[round.current].join("")
+        validateWord(letters)
     }
 
     //TO DO////////////////////////////////////////////////////////
