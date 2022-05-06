@@ -13,10 +13,11 @@ import { v4 as uuidv4 } from 'uuid';
 
 function App() {
 
-  //const words = useState([{word: "tractor"}, {word: "egg"}, {word: "flax"}])
-  //const words = [{word: "tractor"}, {word: "egg"}, {word: "flax"}, {word: "barn"}, {word: "wheat"}, {word: "combine"}, {word: "apple"}, {word: "sheep"}, {word: "canola"}, {word: "cow"}, {word: "chicken"}]
 
-  const words = [{word: "golf"}, {word: "ball"}, {word: "birdie"}, {word: "eagle"}, {word: "flag"}, {word: "putter"}, {word: "driver"}]
+  //const words = useState([{word: "tractor"}, {word: "egg"}, {word: "flax"}])
+  const words = [{word: "tractor"}, {word: "egg"}, {word: "flax"}, {word: "barn"}, {word: "wheat"}, {word: "combine"}, {word: "apple"}, {word: "sheep"}, {word: "canola"}, {word: "cow"}, {word: "chicken"}]
+
+  //const words = [{word: "golf"}, {word: "ball"}, {word: "birdie"}, {word: "eagle"}, {word: "flag"}, {word: "putter"}, {word: "driver"}]
 
 
 
@@ -25,6 +26,12 @@ function App() {
       <Playboard words={words}/>
     </div>
   );
+
+
+
+
+
+
 }
 
 export default App;
